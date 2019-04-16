@@ -13,8 +13,8 @@ app.listen(port, () => `Listening on port ${port}`)
 
 //-- Connect Sequelize with the Postgres server --//
 const Sequelize = require('sequelize')
-const sequelize = new Sequelize(
-  'postgres://postgres:secret@localhost:5432/postgres',
+const connectionString = process.env.DATABASE_URL || 'postgres://postgres:secret@localhost:5432/postgres'
+const sequelize = new Sequelize(connectionString,
   {
     define:
     {
